@@ -1,0 +1,7 @@
+cd
+├─ titre
+├─ artiste
+├─ pays
+├─ compagnie
+├─ prix
+└─ annee

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TP CSS - Partie 1</title>
+  <style>
+    /* Exercice 1 à 4 : Classes et sélecteurs */
+    .important { color: #c0392b; font-weight: bold; }
+
+    p h2 { color: #2980b9; }
+    p > h2 { text-decoration: underline; }
+    p + h2 { color: #27ae60; }
+    p ~ h2 { font-style: italic; }
+
+    /* Exercice 1 à 4 : Pseudo-classes */
+    a:visited { color: #8e44ad; }
+    p em:first-child { background: #f9e79f; }
+    input:required:valid { border: 2px solid #27ae60; }
+
+    /* Exercice 1 à 4 : Pseudo-éléments */
+    p:first-letter { font-size: 1.6em; font-weight: bold; }
+    dt:before { content: "• "; color: #34495e; }
+    p:before { content: "[Début] "; color: #7f8c8d; }
+    p:after { content: " [Fin]"; color: #7f8c8d; }
+
+    /* Exercice 1 à 4 : Héritage */
+    .heritage { color: #2c3e50; font-family: Arial, sans-serif; }
+
+    /* Exercice 5 : Positionnement */
+    #static { position: static; background: #ecf0f1; padding: 10px; margin: 10px 0; }
+    #relative { position: relative; top: 20px; left: 20px; background: #d6eaf8; padding: 10px; margin: 10px 0; }
+    #absolute { position: absolute; top: 100px; left: 50px; background: #fadbd8; padding: 10px; }
+    #fixed { position: fixed; top: 10px; right: 10px; background: #f5cba7; padding: 10px; }
+    #sticky { position: sticky; top: 0; background: #d5f5e3; padding: 10px; }
+
+    body { min-height: 2000px; }
+    .spacer { height: 600px; }
+  </style>
+</head>
+<body>
+  <!-- Exercice 1 à 4 : Classes et sélecteurs CSS -->
+  <section>
+    <h1>TP CSS - Partie 1</h1>
+    <h2>Classes et sélecteurs</h2>
+
+    <p class="important">Paragraphe avec la classe .important</p>
+
+    <p>
+      <h2>h2 dans un p (sélecteur p h2)</h2>
+    </p>
+
+    <p>
+      <h2>h2 enfant direct (sélecteur p > h2)</h2>
+    </p>
+
+    <p>Paragraphe avant h2 (sélecteur p + h2)</p>
+    <h2>h2 immédiatement après un p</h2>
+
+    <p>Paragraphe 1 pour p ~ h2</p>
+    <p>Paragraphe 2 pour p ~ h2</p>
+    <h2>h2 suivant un p (sélecteur p ~ h2)</h2>
+  </section>
+
+  <!-- Exercice 1 à 4 : Pseudo-classes -->
+  <section>
+    <h2>Pseudo-classes</h2>
+    <a href="https://example.com" target="_blank">Lien visité</a>
+
+    <p><em>em est le premier enfant</em> texte après</p>
+
+    <label>
+      Champ requis :
+      <input type="text" required placeholder="Tapez un texte" />
+    </label>
+  </section>
+
+  <!-- Exercice 1 à 4 : Pseudo-éléments -->
+  <section>
+    <h2>Pseudo-éléments</h2>
+    <p>Exemple de paragraphe pour first-letter, before et after.</p>
+
+    <dl>
+      <dt>Terme 1</dt>
+      <dd>Définition 1</dd>
+      <dt>Terme 2</dt>
+      <dd>Définition 2</dd>
+    </dl>
+  </section>
+
+  <!-- Exercice 1 à 4 : Héritage -->
+  <section class="heritage">
+    <h2>Héritage</h2>
+    <div>
+      Texte dans div (couleur + police appliquées)
+      <p>Texte dans p (hérite du div)</p>
+      <span>Texte dans span (hérite du div)</span>
+    </div>
+  </section>
+
+  <!-- Exercice 5 : Positionnement CSS -->
+  <section>
+    <h2>Positionnement</h2>
+
+    <div id="fixed">#fixed</div>
+
+    <div id="static">#static (position: static)</div>
+
+    <div id="relative">#relative (position: relative, décalée de 20px)</div>
+
+    <div id="absolute">#absolute (position: absolute)</div>
+
+    <div class="spacer"></div>
+
+    <div id="sticky">#sticky (position: sticky)</div>
+
+    <div class="spacer"></div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,7 @@
+<!ELEMENT liste-interpretes (interprete+)>
+<!ELEMENT interprete (nom, prenom, genre?, pays?)>
+<!ATTLIST interprete id ID #REQUIRED>
+<!ELEMENT nom (#PCDATA)>
+<!ELEMENT prenom (#PCDATA)>
+<!ELEMENT genre (#PCDATA)>
+<!ELEMENT pays (#PCDATA)>

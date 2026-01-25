@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TP CSS 2 - Float</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; }
+    #header, #footer { width: 100%; background: #d6eaf8; padding: 20px; box-sizing: border-box; }
+    #menu { float: left; width: 20%; background: #ecf0f1; padding: 20px; box-sizing: border-box; }
+    #content { float: left; width: 60%; background: #fef9e7; padding: 20px; box-sizing: border-box; }
+    #sidebar { float: right; width: 20%; background: #fadbd8; padding: 20px; box-sizing: border-box; }
+    #footer { clear: both; background: #d5f5e3; }
+  </style>
+</head>
+<body>
+  <div id="header">Header (100% largeur)</div>
+  <div id="menu">Menu (gauche)</div>
+  <div id="content">Contenu (centre)</div>
+  <div id="sidebar">Sidebar (droite)</div>
+  <div id="footer">Footer (clear: both)</div>
+</body>
+</html>

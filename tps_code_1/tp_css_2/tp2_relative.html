@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TP CSS 2 - Position Relative</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; }
+    #header { height: 80px; background: #d6eaf8; padding: 20px; box-sizing: border-box; }
+    #menu { position: relative; width: 20%; background: #ecf0f1; padding: 20px; box-sizing: border-box; }
+    #content { position: relative; width: 60%; background: #fef9e7; padding: 20px; box-sizing: border-box; }
+    #sidebar { position: relative; width: 20%; background: #fadbd8; padding: 20px; box-sizing: border-box; }
+    #footer { height: 60px; background: #d5f5e3; padding: 20px; box-sizing: border-box; }
+
+    .row { position: relative; height: 200px; }
+    #menu { top: 0; left: 0; }
+    #content { top: -200px; left: 20%; }
+    #sidebar { top: -400px; left: 80%; }
+  </style>
+</head>
+<body>
+  <div id="header">Header (flux naturel)</div>
+
+  <div class="row">
+    <div id="menu">Menu (gauche)</div>
+    <div id="content">Contenu (centre)</div>
+    <div id="sidebar">Sidebar (droite)</div>
+  </div>
+
+  <div id="footer">Footer (flux naturel)</div>
+</body>
+</html>

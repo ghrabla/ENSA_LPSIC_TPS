@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE liste-interpretes SYSTEM "liste-interpretes.dtd">
+<liste-interpretes>
+  <interprete id="i1">
+    <nom>Benali</nom>
+    <prenom>Karim</prenom>
+    <genre>Pop</genre>
+    <pays>Maroc</pays>
+  </interprete>
+  <interprete id="i2">
+    <nom>Moreau</nom>
+    <prenom>Claire</prenom>
+    <genre>Jazz</genre>
+    <pays>France</pays>
+  </interprete>
+</liste-interpretes>

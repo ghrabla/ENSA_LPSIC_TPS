@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Site Web LPU-ICSI</title>
+</head>
+<body>
+    <!-- En-tête du site -->
+    <header>
+        <h1>Contactez-nous</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="apropos.html">À propos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Section formulaire de contact -->
+    <section>
+        <h2>Formulaire de contact</h2>
+        <p>Remplissez ce formulaire pour nous envoyer un message. Tous les champs marqués d'un astérisque (*) sont obligatoires.</p>
+        
+        <!-- Formulaire avec validation HTML5 -->
+        <form action="#" method="post">
+            <div>
+                <label for="nom">Nom complet * :</label><br>
+                <input type="text" id="nom" name="nom" required placeholder="Entrez votre nom">
+            </div>
+            <br>
+            
+            <div>
+                <label for="email">Adresse e-mail * :</label><br>
+                <input type="email" id="email" name="email" required placeholder="exemple@email.com">
+            </div>
+            <br>
+            
+            <div>
+                <label for="password">Mot de passe * :</label><br>
+                <input type="password" id="password" name="password" required minlength="6" 
+                       placeholder="Minimum 6 caractères">
+            </div>
+            <br>
+            
+            <div>
+                <label for="dateNaissance">Date de naissance :</label><br>
+                <input type="date" id="dateNaissance" name="dateNaissance">
+            </div>
+            <br>
+            
+            <div>
+                <label for="satisfaction">Niveau de satisfaction (1 à 10) :</label><br>
+                <input type="range" id="satisfaction" name="satisfaction" min="1" max="10" value="5">
+                <output for="satisfaction">5</output>
+            </div>
+            <br>
+            
+            <div>
+                <label for="message">Message * :</label><br>
+                <textarea id="message" name="message" rows="5" cols="50" required 
+                          placeholder="Écrivez votre message ici..."></textarea>
+            </div>
+            <br>
+            
+            <div>
+                <input type="checkbox" id="conditions" name="conditions" required>
+                <label for="conditions">J'accepte les conditions d'utilisation *</label>
+            </div>
+            <br>
+            
+            <div>
+                <input type="submit" value="Envoyer le message">
+                <input type="reset" value="Réinitialiser">
+            </div>
+        </form>
+    </section>
+
+    <!-- Pied de page -->
+    <footer>
+        <p>&copy; 2024 LPU-ICSI - UCA ENSA SAFI. Tous droits réservés.</p>
+        <p>Contact : contact@uca.ma | Téléphone : +212 5XX-XXXXXX</p>
+    </footer>
+    
+    <!-- Script pour afficher la valeur du range -->
+    <script>
+        const rangeInput = document.getElementById('satisfaction');
+        const output = document.querySelector('output[for="satisfaction"]');
+        rangeInput.addEventListener('input', function() {
+            output.textContent = this.value;
+        });
+    </script>
+</body>
+</html>

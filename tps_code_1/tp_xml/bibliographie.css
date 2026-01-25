@@ -1,0 +1,57 @@
+bibliographie {
+  display: block;
+  font-family: Arial, sans-serif;
+  padding: 16px;
+}
+
+publication {
+  display: block;
+  padding: 10px 0;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+publication::after {
+  content: ".";
+}
+
+titre {
+  display: block;
+  font-style: italic;
+}
+
+titre::before {
+  content: "\201C";
+}
+
+titre::after {
+  content: "\201D";
+}
+
+auteurs {
+  display: block;
+}
+
+auteur {
+  display: inline;
+}
+
+auteur:not(:last-child)::after {
+  content: ", ";
+}
+
+pages {
+  display: block;
+}
+
+page {
+  display: inline;
+}
+
+page:not(:last-child)::after {
+  content: ", ";
+}
+
+annee {
+  display: block;
+  color: #555;
+}

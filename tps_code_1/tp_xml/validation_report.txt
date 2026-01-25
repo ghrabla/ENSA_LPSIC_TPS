@@ -1,0 +1,16 @@
+Validation (à effectuer en ligne)
+
+Fichiers CD
+- cd_a.xml : bien formé, DTD cd.dtd référencée, encodage utf-8
+- cd_b.xml : bien formé, DTD cd.dtd référencée, encodage utf-8
+- cd_new.xml : bien formé, DTD cd.dtd référencée, encodage utf-8
+
+Liste-interpretes
+- Liste-interpretes.xml : bien formé, DTD liste-interpretes.dtd référencée, encodage utf-8
+
+Bibliographie
+- bibliographie.xml : bien formé, DTD bibliographie.dtd référencée, encodage utf-8
+
+Actions à faire
+- Valider chaque fichier XML avec un validateur en ligne.
+- Confirmer la validité par rapport à la DTD indiquée.

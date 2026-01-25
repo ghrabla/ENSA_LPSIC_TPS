@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestion des Fenêtres</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    ul { list-style: none; padding: 0; }
+    li { margin: 8px 0; }
+    a { color: #0066cc; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <h1>Gestion des fenêtres</h1>
+  <p>Survolez un lien pour ouvrir l'exercice correspondant.</p>
+
+  <ul>
+    <li><a href="ex1_calculatrice_v1.html" data-target="ex1">Calculatrice V1 (Popup)</a></li>
+    <li><a href="ex2_calculatrice_v2.html" data-target="ex2">Calculatrice V2 (Formulaire)</a></li>
+    <li><a href="ex3_clock.html" data-target="ex3">Gestion Horloge</a></li>
+  </ul>
+
+  <script>
+    var liens = document.querySelectorAll("a[data-target]");
+
+    liens.forEach(function (lien) {
+      lien.addEventListener("mouseenter", function (event) {
+        event.preventDefault();
+        var url = lien.getAttribute("href");
+        window.open(url, "_blank");
+      });
+    });
+  </script>
+</body>
+</html>

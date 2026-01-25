@@ -1,0 +1,9 @@
+<!ELEMENT bibliographie (publication+)>
+<!ELEMENT publication (titre, auteurs, pages, annee)>
+<!ATTLIST publication type (article|conference) #REQUIRED>
+<!ELEMENT titre (#PCDATA)>
+<!ELEMENT auteurs (auteur+)>
+<!ELEMENT auteur (#PCDATA)>
+<!ELEMENT pages (page+)>
+<!ELEMENT page (#PCDATA)>
+<!ELEMENT annee (#PCDATA)>

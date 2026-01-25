@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TP CSS 2 - Position Absolute</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; }
+    #header { position: absolute; top: 0; left: 0; width: 100%; height: 80px; background: #d6eaf8; padding: 20px; box-sizing: border-box; }
+    #menu { position: absolute; top: 80px; left: 0; width: 20%; bottom: 60px; background: #ecf0f1; padding: 20px; box-sizing: border-box; }
+    #content { position: absolute; top: 80px; left: 20%; width: 60%; bottom: 60px; background: #fef9e7; padding: 20px; box-sizing: border-box; }
+    #sidebar { position: absolute; top: 80px; right: 0; width: 20%; bottom: 60px; background: #fadbd8; padding: 20px; box-sizing: border-box; }
+    #footer { position: absolute; left: 0; bottom: 0; width: 100%; height: 60px; background: #d5f5e3; padding: 20px; box-sizing: border-box; }
+  </style>
+</head>
+<body>
+  <div id="header">Header (100% largeur, 80px hauteur)</div>
+  <div id="menu">Menu (gauche)</div>
+  <div id="content">Contenu (centre)</div>
+  <div id="sidebar">Sidebar (droite)</div>
+  <div id="footer">Footer (bas de page)</div>
+</body>
+</html>

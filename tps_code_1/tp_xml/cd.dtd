@@ -1,0 +1,7 @@
+<!ELEMENT cd (titre, artiste, pays, compagnie, prix, annee)>
+<!ELEMENT titre (#PCDATA)>
+<!ELEMENT artiste (#PCDATA)>
+<!ELEMENT pays (#PCDATA)>
+<!ELEMENT compagnie (#PCDATA)>
+<!ELEMENT prix (#PCDATA)>
+<!ELEMENT annee (#PCDATA)>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculatrice V1 - Popup</title>
+</head>
+<body>
+  <h1>Calculatrice V1 (Popup)</h1>
+  <p>Veuillez patienter... une fenêtre vous demandera une expression.</p>
+
+  <script>
+    var expression = prompt("Entrez une expression mathématique (ex: 2+3*4):");
+
+    if (expression === null || expression.trim() === "") {
+      alert("Aucune expression saisie.");
+    } else {
+      try {
+        var resultat = eval(expression);
+        alert("Expression : " + expression + "\nRésultat : " + resultat);
+      } catch (erreur) {
+        alert("Expression invalide.");
+      }
+    }
+  </script>
+</body>
+</html>

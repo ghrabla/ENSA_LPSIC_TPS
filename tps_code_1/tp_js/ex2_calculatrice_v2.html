@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculatrice V2 - Formulaire</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    label { display: block; margin-top: 8px; }
+    fieldset { margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Calculatrice V2 (Formulaire)</h1>
+
+  <form id="calcForm">
+    <label>
+      Expression :
+      <input type="text" id="expression" placeholder="2+3*4" />
+    </label>
+
+    <fieldset>
+      <legend>Afficher le résultat</legend>
+      <label>
+        <input type="radio" name="affichage" value="champ" checked />
+        Dans un champ texte
+      </label>
+      <label>
+        <input type="radio" name="affichage" value="alert" />
+        Dans une alerte
+      </label>
+    </fieldset>
+
+    <button type="button" id="btnCalculer">Calculer</button>
+
+    <label>
+      Résultat :
+      <input type="text" id="resultat" readonly />
+    </label>
+  </form>
+
+  <script>
+    function calculerExpression(expression) {
+      return eval(expression);
+    }
+
+    document.getElementById("btnCalculer").addEventListener("click", function () {
+      var expression = document.getElementById("expression").value;
+      var choix = document.querySelector("input[name='affichage']:checked").value;
+
+      if (expression.trim() === "") {
+        alert("Veuillez saisir une expression.");
+        return;
+      }
+
+      try {
+        var resultat = calculerExpression(expression);
+
+        if (choix === "champ") {
+          document.getElementById("resultat").value = resultat;
+        } else {
+          alert("Expression : " + expression + "\nRésultat : " + resultat);
+        }
+      } catch (erreur) {
+        alert("Expression invalide.");
+      }
+    });
+  </script>
+</body>
+</html>

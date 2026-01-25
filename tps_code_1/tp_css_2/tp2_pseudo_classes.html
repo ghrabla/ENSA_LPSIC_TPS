@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TP CSS 2 - Pseudo-classes</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    ul { list-style: none; padding: 0; }
+    li { margin: 6px 0; }
+
+    a { color: #2c3e50; text-decoration: none; }
+    a:hover { color: #2980b9; text-decoration: underline; }
+    a:visited { color: #8e44ad; }
+    a:active { color: #c0392b; }
+
+    li:first-child { font-weight: bold; }
+    li:last-child { font-style: italic; }
+
+    input:required { border: 2px solid #f5cba7; }
+    input:valid { border-color: #27ae60; }
+    input:invalid { border-color: #c0392b; }
+  </style>
+</head>
+<body>
+  <h1>Pseudo-classes</h1>
+
+  <nav>
+    <ul>
+      <li><a href="https://example.com" target="_blank">Lien 1</a></li>
+      <li><a href="https://example.org" target="_blank">Lien 2</a></li>
+      <li><a href="https://example.net" target="_blank">Lien 3</a></li>
+      <li><a href="https://example.edu" target="_blank">Lien 4</a></li>
+      <li><a href="https://example.gov" target="_blank">Lien 5</a></li>
+    </ul>
+  </nav>
+
+  <form>
+    <label>
+      Nom (requis) :
+      <input type="text" required placeholder="Votre nom" />
+    </label>
+    <br />
+    <label>
+      Email (requis) :
+      <input type="email" required placeholder="exemple@mail.com" />
+    </label>
+  </form>
+</body>
+</html>

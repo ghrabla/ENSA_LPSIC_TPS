@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestion Horloge</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    #horloge { font-size: 1.2rem; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Gestion de l'horloge</h1>
+  <p>Date et heure actuelles :</p>
+  <div id="horloge"></div>
+
+  <script>
+    function formaterNombre(n) {
+      return n < 10 ? "0" + n : n;
+    }
+
+    function afficherDateHeure() {
+      var maintenant = new Date();
+      var jour = formaterNombre(maintenant.getDate());
+      var mois = formaterNombre(maintenant.getMonth() + 1);
+      var annee = maintenant.getFullYear();
+      var heures = formaterNombre(maintenant.getHours());
+      var minutes = formaterNombre(maintenant.getMinutes());
+      var secondes = formaterNombre(maintenant.getSeconds());
+
+      var texte = jour + "/" + mois + "/" + annee + " - " + heures + ":" + minutes + ":" + secondes;
+      document.getElementById("horloge").textContent = texte;
+    }
+
+    afficherDateHeure();
+    setInterval(afficherDateHeure, 1000);
+  </script>
+</body>
+</html>

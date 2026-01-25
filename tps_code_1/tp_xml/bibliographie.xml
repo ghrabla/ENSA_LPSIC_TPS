@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/css" href="bibliographie.css"?>
+<!DOCTYPE bibliographie SYSTEM "bibliographie.dtd">
+<bibliographie>
+  <publication type="article">
+    <titre>Analyse des réseaux IoT</titre>
+    <auteurs>
+      <auteur>Nadia El Amrani</auteur>
+      <auteur>Omar Saidi</auteur>
+    </auteurs>
+    <pages>
+      <page>12-24</page>
+    </pages>
+    <annee>2022</annee>
+  </publication>
+  <publication type="conference">
+    <titre>Optimisation des systèmes distribués</titre>
+    <auteurs>
+      <auteur>Hajar Lahlou</auteur>
+      <auteur>Yassine Bekkali</auteur>
+      <auteur>Imane Chraibi</auteur>
+    </auteurs>
+    <pages>
+      <page>101-110</page>
+      <page>201-205</page>
+    </pages>
+    <annee>2024</annee>
+  </publication>
+</bibliographie>

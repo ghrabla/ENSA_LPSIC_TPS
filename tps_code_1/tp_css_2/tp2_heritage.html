@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TP CSS 2 - Héritage</title>
+  <style>
+    body { color: #2c3e50; font-family: Arial, sans-serif; font-size: 18px; }
+    .surcharge { color: #c0392b; font-weight: bold; }
+    .container { background: #f8f9f9; padding: 16px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Héritage CSS</h1>
+    <p>Paragraphe qui hérite du style du body.</p>
+    <p style="color: initial;">Paragraphe qui casse l'héritage (color: initial).</p>
+    <p class="surcharge">Paragraphe avec une classe qui surcharge le style hérité.</p>
+  </div>
+</body>
+</html>

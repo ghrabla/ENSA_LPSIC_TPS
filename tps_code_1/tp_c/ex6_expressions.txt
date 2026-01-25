@@ -1,0 +1,21 @@
+Exercice 6
+
+Declarations :
+int n = 10, p = 4;
+long q = 2;
+float x = 1.75;
+
+a) n + q : type long, valeur 12
+b) n + x : type float, valeur 11.75
+c) n % p + q : type long, valeur 4
+d) n < p : type int, valeur 0
+e) n >= p : type int, valeur 1
+f) n > q : type int, valeur 1
+g) q + 3 * (n > p) : type long, valeur 5
+h) q && n : type int, valeur 1
+i) (q - 2) && (n - 10) : type int, valeur 0
+j) x * (q == 2) : type float, valeur 1.75
+k) x * (q = 5) : type float, valeur 8.75 (q devient 5)
+
+Instruction simplifiee :
+z = a + b;

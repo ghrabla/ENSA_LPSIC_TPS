@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TP CSS 2 - Pseudo-éléments</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    p::first-letter { font-size: 1.8em; font-weight: bold; }
+    p::first-line { color: #2980b9; }
+    p::before { content: "★ "; color: #f1c40f; }
+    p::after { content: " (Note ajoutée)"; color: #7f8c8d; }
+  </style>
+</head>
+<body>
+  <h1>Pseudo-éléments</h1>
+  <p>Premier paragraphe avec styles sur la première lettre, la première ligne, avant et après.</p>
+  <p>Deuxième paragraphe pour observer le même comportement des pseudo-éléments.</p>
+</body>
+</html>
