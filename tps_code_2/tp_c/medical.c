@@ -32,6 +32,7 @@ void listAppointments();
 void mainMenu();
 
 int main() {
+    setvbuf(stdout, NULL, _IONBF, 0);
     mainMenu();
     return 0;
 }
@@ -74,12 +75,16 @@ void addPatient() {
     Patient p;
     printf(CYAN "\n--- Add Patient ---" RESET "\n");
     printf(YELLOW "  Patient ID : " RESET);
+    fflush(stdout);
     scanf("%d", &p.id);
     printf(YELLOW "  Name       : " RESET);
+    fflush(stdout);
     scanf(" %49[^\n]", p.name);
     printf(YELLOW "  Age        : " RESET);
+    fflush(stdout);
     scanf("%d", &p.age);
     printf(YELLOW "  Phone      : " RESET);
+    fflush(stdout);
     scanf("%14s", p.phone);
 
     fwrite(&p, sizeof(Patient), 1, fp);
@@ -130,12 +135,16 @@ void addAppointment() {
     Appointment a;
     printf(CYAN "\n--- Schedule Appointment ---" RESET "\n");
     printf(YELLOW "  Patient ID  : " RESET);
+    fflush(stdout);
     scanf("%d", &a.patientId);
     printf(YELLOW "  Date (YYYY-MM-DD) : " RESET);
+    fflush(stdout);
     scanf("%10s", a.date);
     printf(YELLOW "  Time (HH:MM)      : " RESET);
+    fflush(stdout);
     scanf("%5s", a.time);
     printf(YELLOW "  Reason      : " RESET);
+    fflush(stdout);
     scanf(" %99[^\n]", a.reason);
 
     fwrite(&a, sizeof(Appointment), 1, fp);
