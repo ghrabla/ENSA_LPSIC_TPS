@@ -1,0 +1,43 @@
+services:
+  db:
+    image: postgres:16
+    user: root
+    environment:
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=odoo17@2023
+      - POSTGRES_DB=postgres
+    restart: always # run as a service
+    ports:
+      - "10050:5432"
+    # volumes:
+    #   - postgres_odoo:/var/lib/postgresql/data
+    networks:
+      - done_network
+  odoo16:
+    image: odoo:16
+    container_name: done_odoo
+    user: root
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+      - "8072:8072"
+    tty: true
+    command: --
+    environment:
+      - HOST=db
+      - USER=odoo
+      - PASSWORD=odoo17@2023
+    volumes:
+      - ./files/etc/:/etc/odoo/
+      - ../../dev/:/mnt/extra-addons
+      - ../../dev/odoo_data/filestore:/var/lib/odoo/.local/share/Odoo/filestore
+    restart: always # run as a service
+    networks:
+      - done_network
+volumes:
+  postgres_odoo:
+
+networks:
+  done_network:
+    driver: bridge

@@ -1,0 +1,12 @@
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - /var/log/done/*.log
+    - /var/log/done/**/*.log
+  processors:
+    - add_tags:
+        tags: ["app"]
+
+output.logstash:
+  hosts: ["logstash:5044"]

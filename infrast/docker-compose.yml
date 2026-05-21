@@ -1,0 +1,238 @@
+services:
+  openresty:
+    image: openresty/openresty:alpine
+    container_name: done_openresty
+    ports:
+      - "80:80"
+    volumes:
+      - ./docker/openresty/:/etc/openresty/conf.d
+      - ./docker/openresty/:/etc/nginx/conf.d
+    depends_on:
+      - nginx
+    networks:
+      - done_network
+  nginx:
+    image: nginx:stable-alpine
+    platform: linux/arm64
+    container_name: done_nginx
+    expose:
+      - "80"
+    volumes:
+      - ../dev/:/var/www:ro
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./docker/nginx/snippets:/etc/nginx/snippets:ro
+    depends_on:
+      - php
+    networks:
+      - done_network
+
+  php:
+    build:
+      context: ./docker/php
+      dockerfile: Dockerfile
+    container_name: done_php83
+    volumes:
+      - ../dev/:/var/www
+      - ./done-logs:/var/log/done
+    environment:
+      PHP_IDE_CONFIG: "serverName=Docker"
+    ports:
+      - "5173:5173"
+      - "5174:5174"
+    networks:
+      - done_network
+    healthcheck:
+      test: [ "CMD", "php-fpm", "-t" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  postgres:
+    build:
+      context: ./docker/postgres
+      dockerfile: Dockerfile
+    platform: linux/arm64
+    container_name: done_postgres
+    environment:
+      POSTGRES_DB: done
+      POSTGRES_USER: done
+      POSTGRES_PASSWORD: done
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - done_network
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U done" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  mariadb:
+    image: arm64v8/mariadb:10.4
+    platform: linux/arm64
+    container_name: done_mariadb
+    environment:
+      MYSQL_DATABASE: done
+      MYSQL_USER: done
+      MYSQL_PASSWORD: done
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - done_network
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "-u",
+          "root",
+          "-p root",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  redis:
+    image: redis:latest
+    container_name: done_redis
+    volumes:
+      - ./docker/redis/redis.conf:/usr/local/etc/redis/redis.conf:ro
+      - redis_data:/data
+    networks:
+      - done_network
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  memcached:
+    image: memcached:latest
+    container_name: done_memcached
+    environment:
+      - MEMCACHED_MAX_MEMORY=64m
+      - MEMCACHED_THREADS=4
+    ports:
+      - "11211:11211"
+    networks:
+      - done_network
+
+  mailhog:
+    image: jcalonso/mailhog:latest
+    platform: linux/arm64
+    container_name: done_mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    networks:
+      - done_network
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.0
+    container_name: elasticsearch
+    environment:
+      - node.name=elasticsearch
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "ingest.geoip.downloader.enabled=false"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+    networks:
+      - done_network
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:9200" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.11.0
+    container_name: kibana
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    ports:
+      - "5601:5601"
+    networks:
+      - done_network
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:5601/api/status" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    depends_on:
+      - elasticsearch
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:8.17.0
+    container_name: logstash
+    environment:
+      - LS_JAVA_OPTS=-Xms512m -Xmx512m
+    volumes:
+      - ./docker/elk/logstash/config/jvm.options:/usr/share/logstash/config/jvm.options
+      - ./docker/elk/logstash/config/logstash.conf:/usr/share/logstash/config/logstash.conf
+    ports:
+      - "5044:5044"
+    networks:
+      - done_network
+    depends_on:
+      - elasticsearch
+
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:7.16.1
+    container_name: filebeat
+    user: root
+    volumes:
+      - ./docker/elk/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml
+      - ./done-logs:/var/log/done:ro
+    depends_on:
+      - elasticsearch
+    networks:
+      - done_network
+
+  typesense:
+      image: typesense/typesense:0.25.1
+      container_name: done_typesense
+      command: >
+          --data-dir /data
+          --api-key=xyz
+          --enable-cors
+          --listen-port 8108
+      ports:
+        - "8108:8108"
+      volumes:
+          - typesense_data:/data
+      networks:
+          - done_network
+      healthcheck:
+          test: [ "CMD", "curl", "-f", "http://localhost:8108/health" ]
+          interval: 10s
+          timeout: 5s
+          retries: 3
+
+volumes:
+  postgres_data:
+  mariadb_data:
+  redis_data:
+  elasticsearch_data:
+  typesense_data:
+
+networks:
+  done_network:
+    driver: bridge
